@@ -87,6 +87,37 @@ class BicepModule {
 	}
 }
 
+<#
+.SYNOPSIS
+
+Lists all modules impacted by changes in a defined commit range.
+
+.DESCRIPTION
+
+The command will output modules that have either been changed in the commit range or modules that have been impacted by the change. The module list will include
+
+* modules added, edited or renamed
+* modules that import or use modules added, edited or renamed
+
+The command preforms the search recursively through all detected module files to build a complete list of impacted modules.
+
+.INPUTS
+
+None. You cannot pipe objects to Add-Extension.
+
+.OUTPUTS
+
+None.
+
+.EXAMPLE
+
+PS> Publish-BicepModules '*.bicep' 'd41eeb1c7c0a6a5e3f11efc175aa36b8eaae4af5..0ee2650f101237af9ad923ad2264d37b983d8bab'
+
+.LINK
+
+https://github.com/lukaferlez/Simpleverse.Bicep/blob/main/README.md
+
+#>
 function Get-BicepImpactedModules {
 	Param(
 		[Parameter(Mandatory=$true,	Position=0, HelpMessage="PathSpec to grep Bicep modules to publish.")]
@@ -164,6 +195,7 @@ function Get-BicepImpactedModules {
 
 Export-ModuleMember Get-BicepImpactedModules
 
+
 function Get-BicepModulesToPublish {
 	Param(
 		[Parameter(Mandatory=$true,	Position=0, HelpMessage="PathSpec to grep Bicep modules to publish.")]
@@ -223,7 +255,7 @@ PS> Publish-BicepModules '*.bicep' 'd41eeb1c7c0a6a5e3f11efc175aa36b8eaae4af5..0e
 
 .LINK
 
-http://www.fabrikam.com/extension.html
+https://github.com/lukaferlez/Simpleverse.Bicep/blob/main/README.md
 
 #>
 function Publish-BicepModules {
@@ -284,7 +316,7 @@ PS> Update-BicepModulesVersion '*.bicep'
 
 .LINK
 
-http://www.fabrikam.com/extension.html
+https://github.com/lukaferlez/Simpleverse.Bicep/blob/main/README.md
 
 #>
 function Update-BicepModulesVersion {

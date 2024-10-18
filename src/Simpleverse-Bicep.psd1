@@ -6,7 +6,7 @@
 	RootModule = 'Simpleverse-Bicep.psm1'
 	
 	# Version number of this module.
-	ModuleVersion     = '2024.10.17.7'
+	ModuleVersion     = 'ModuleVersionNumber'
 	
 	# Supported PSEditions
 	# CompatiblePSEditions = @()
@@ -24,7 +24,7 @@
 	Copyright         = '(c) luka@ferlez. All rights reserved.'
 	
 	# Description of the functionality provided by this module
-	Description = 'Provides functions to manage Bicep modules.
+	Description = 'Simplifies operations with custom Bicep modules and version maintenance.
 		* Get-BicepImports - Returns list of imports/modules used in Bicep files.
 		* Get-BicepImpactedModules - Returns list of impacted modules impacted by changes between two commits. It will include modules changes following the import hierarchy provuiding a full list of impacted modules.
 		* Get-BicepModulesToPublish - Returns list of Bicep modules to publish based on the changes between two commits or all modules based on parameters. It will include modules changes following the import hierarchy provuiding a full list of impacted modules.
@@ -95,13 +95,13 @@
 		PSData = @{
 	
 			# Tags applied to this module. These help with module discovery in online galleries.
-			# Tags = @()
+			Tags = "Bicep", "Azure", "ACR", "Publish", "Version"
 	
 			# A URL to the license for this module.
-			# LicenseUri = ''
+			LicenseUri = 'https://github.com/lukaferlez/Simpleverse.Bicep?tab=MIT-1-ov-file#readme'
 	
 			# A URL to the main website for this project.
-			# ProjectUri = ''
+			ProjectUri = 'https://github.com/lukaferlez/Simpleverse.Bicep'
 	
 			# A URL to an icon representing this module.
 			# IconUri = ''
