@@ -1,0 +1,28 @@
+name: release
+on:
+  workflow_dispatch:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    env:
+      src-dir: ./src
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Replace in files
+      uses: richardrigutins/replace-in-files@v2.1.8
+      with:
+        files: '*.psd1'
+        # The text that will replace the matched text.
+        replacement-text: ${{github.ref_name}}
+        # The text that will be replaced.
+        search-text: 'ModuleVersionNumber'
+    - name: Publish Package
+      run: Publish-Module -Name Simpleverse-Bicep.psd1 -NuGetApiKey ${{secrets.psgallery_api_key}}
+      working-directory: ${{env.src-dir}}
