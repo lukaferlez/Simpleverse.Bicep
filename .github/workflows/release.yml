@@ -23,7 +23,7 @@ jobs:
         find: 'v'
         replace: ''              
     - name: Replace in files
-      uses: richardrigutins/replace-in-files@v2.1.8
+      uses: richardrigutins/replace-in-files@v2
       with:
         files: 'src/Simpleverse-Bicep.psd1'
         # The text that will replace the matched text.
@@ -31,12 +31,19 @@ jobs:
         # The text that will be replaced.
         search-text: 'ModuleVersionNumber'
     - name: Read psd1
-      id: manifest
       uses: jaywcjlove/github-action-read-file@main
       with:
         path: 'src/Simpleverse-Bicep.psd1'
-    - name: Echo psd1
-      run: echo "${{ steps.package.outputs.content }}"
+    - name: Replace string in file
+      uses: MathieuSoysal/replace-string-in-file@v1.0.0
+      with:
+        file: src/Simpleverse-Bicep.psd1
+        old-string: ModuleVersionNumber
+        new-string: ${{ steps.findandreplace.outputs.value }}
+    - name: Read psd1
+      uses: jaywcjlove/github-action-read-file@main
+      with:
+        path: 'src/Simpleverse-Bicep.psd1'
     - name: Publish Package
       run: Publish-Module -Name src/Simpleverse-Bicep.psd1 -NuGetApiKey ${{secrets.psgallery_api_key}}
       working-directory: ${{env.src-dir}}
