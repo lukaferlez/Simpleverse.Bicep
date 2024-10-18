@@ -25,11 +25,9 @@ jobs:
     - name: Replace in files
       uses: richardrigutins/replace-in-files@v2
       with:
-        files: 'src/Simpleverse-Bicep.psd1'
-        # The text that will replace the matched text.
+        files: src/Simpleverse-Bicep.psd1
         replacement-text: ${{ steps.findandreplace.outputs.value }}
-        # The text that will be replaced.
-        search-text: 'ModuleVersionNumber'
+        search-text: ModuleVersionNumber
     - name: Read psd1
       uses: jaywcjlove/github-action-read-file@main
       with:
