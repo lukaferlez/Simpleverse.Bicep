@@ -1,6 +1,6 @@
 # Original: https://evotec.xyz/powershell-single-psm1-file-versus-multi-file-modules/
 param (
-	[Parameter(Mandatory=$true, Position=0 HelpMessage="The name of the module.")]
+	[Parameter(Mandatory=$true, Position=0, HelpMessage="The name of the module.")]
 	[string] $name,
 	[Parameter(Mandatory=$true, Position=1, HelpMessage="Powershell manifest path.")]
 	[string] $psdPath,
