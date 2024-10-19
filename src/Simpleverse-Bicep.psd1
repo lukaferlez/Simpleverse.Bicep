@@ -6,7 +6,7 @@
 	RootModule = 'Simpleverse-Bicep.psm1'
 	
 	# Version number of this module.
-	ModuleVersion     = 'ModuleVersionNumber'
+	ModuleVersion     = <ModuleVersionNumber>
 	
 	# Supported PSEditions
 	# CompatiblePSEditions = @()
