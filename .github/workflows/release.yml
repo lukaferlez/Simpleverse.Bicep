@@ -21,27 +21,7 @@ jobs:
       with:
         source: ${{github.ref_name}}
         find: 'v'
-        replace: ''              
-    - name: Replace in files
-      uses: richardrigutins/replace-in-files@v2
-      with:
-        files: src/Simpleverse-Bicep.psd1
-        replacement-text: ${{ steps.findandreplace.outputs.value }}
-        search-text: ModuleVersionNumber
-    - name: Read psd1
-      uses: jaywcjlove/github-action-read-file@main
-      with:
-        path: 'src/Simpleverse-Bicep.psd1'
-    - name: Replace string in file
-      uses: MathieuSoysal/replace-string-in-file@v1.0.0
-      with:
-        file: src/Simpleverse-Bicep.psd1
-        old-string: ModuleVersionNumber
-        new-string: ${{ steps.findandreplace.outputs.value }}
-    - name: Read psd1
-      uses: jaywcjlove/github-action-read-file@main
-      with:
-        path: 'src/Simpleverse-Bicep.psd1'
-    - name: Publish Package
-      run: Publish-Module -Name src/Simpleverse-Bicep.psd1 -NuGetApiKey ${{secrets.psgallery_api_key}}
-      working-directory: ${{env.src-dir}}
+        replace: ''
+    - name: Publish with powershell
+      run:
+        .\publish.ps1 'Simpleverse-Bicep' './src/simpleverse-bicep.psd1' './src/*.*' '${{ steps.findandreplace.outputs.value }}'' '${{secrets.psgallery_api_key}}'

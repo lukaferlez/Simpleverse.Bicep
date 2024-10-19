@@ -3,10 +3,10 @@
 @{
 
 	# Script module or binary module file associated with this manifest.
-	RootModule = 'Simpleverse-Bicep.psm1'
+	RootModule = '{{modulePath}}'
 	
 	# Version number of this module.
-	ModuleVersion     = <ModuleVersionNumber>
+	ModuleVersion     = '{{version}}'
 	
 	# Supported PSEditions
 	# CompatiblePSEditions = @()
@@ -110,7 +110,7 @@
 			# ReleaseNotes = ''
 	
 			# Prerelease string of this module
-			# Prerelease = ''
+			# Prerelease = '{{preReleaseTag}}'
 	
 			# Flag to indicate whether the module requires explicit user acceptance for install/update/save
 			# RequireLicenseAcceptance = $false
