@@ -6,6 +6,13 @@ Powershell module to enable simplified operations with custom Bicep modules and 
 * Publishing modules to an Azure Container Registry
 * Updating the used version in Bicep files from an Azure Container registry
 
+## Instalation
+Module is published to the Powershell Gallery https://www.powershellgallery.com/packages/Simpleverse.Bicep.
+
+```
+PS> Install-Module -Name Simpleverse.Bicep
+```
+
 ## Listing changed modules
 Lists all modules impacted by changes in a defined commit range.
 
