@@ -24,4 +24,4 @@ jobs:
         replace: ''
     - name: Publish with powershell
       run:
-        .\publish.ps1 'Simpleverse.Bicep' './src/manifest.psd1' './src/*.*' '${{ steps.findandreplace.outputs.value }}' '${{secrets.psgallery_api_key}}'
+        .\Publish-SimpleverseBicep.ps1  -v '${{ steps.findandreplace.outputs.value }}' -ak '${{secrets.psgallery_api_key}}'

@@ -25,11 +25,11 @@
 	
 	# Description of the functionality provided by this module
 	Description = 'Simplifies operations with custom Bicep modules and version maintenance.
-		* Get-BicepImports - Returns list of imports/modules used in Bicep files.
-		* Get-BicepImpactedModules - Returns list of impacted modules impacted by changes between two commits. It will include modules changes following the import hierarchy provuiding a full list of impacted modules.
-		* Get-BicepModulesToPublish - Returns list of Bicep modules to publish based on the changes between two commits or all modules based on parameters. It will include modules changes following the import hierarchy provuiding a full list of impacted modules.
-		* Publish-BicepModules - Publishes Bicep modules to Azure ACR.
-		* Update-BicepModulesVersion - Updates the version of the imports & modules from custom repositories to the latest version available in the registry. Currently supports only Azure ACR.
+		* Get-BicepModuleImport - Returns list of imports/modules used in Bicep files.
+		* Get-BicepModuleChanged - Returns list of impacted modules impacted by changes between two commits. It will include modules changes following the import hierarchy provuiding a full list of impacted modules.
+		* Get-BicepModuleForPublish - Returns list of Bicep modules to publish based on the changes between two commits or all modules based on parameters. It will include modules changes following the import hierarchy provuiding a full list of impacted modules.
+		* Publish-BicepModule - Publishes Bicep modules to Azure ACR.
+		* Update-BicepModuleVersion - Updates the version of the imports & modules from custom repositories to the latest version available in the registry. Currently supports only Azure ACR.
 	'
 	
 	# Minimum version of the PowerShell engine required by this module
@@ -69,7 +69,7 @@
 	# NestedModules = @()
 	
 	# Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-	FunctionsToExport = @("Update-BicepModulesVersion", "Publish-BicepModules", "Get-BicepModulesToPublish", "Get-BicepImports", "Get-BicepImpactedModules")
+	FunctionsToExport = @("Update-BicepModuleVersion", "Publish-BicepModule", "Get-BicepModuleForPublish", "Get-BicepModuleImport", "Get-BicepModuleChanged")
 	
 	# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 	CmdletsToExport   = @()
