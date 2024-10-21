@@ -14,4 +14,6 @@ param(
 . "./src/log/Write-InformationEx.ps1"
 . "./src/build/Publish-Manifest.ps1"
 
+Resolve-Path './src' | Write-Host -ForegroundColor Red
+
 ./Build-SimpleverseBicep -v $version | Publish-Manifest -ak $apiKey -Confirm:$ConfirmPreference -WhatIf:$WhatIfPreference

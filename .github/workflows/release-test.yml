@@ -1,4 +1,4 @@
-name: release
+name: release-test
 on:
   workflow_dispatch:
   push:
@@ -21,6 +21,5 @@ jobs:
         replace: ''
     - name: Publish with powershell
       run:
-        Write-Host Resolve-Path ./src -ForegroundColor Red
         .\Publish-SimpleverseBicep.ps1 -v '${{ steps.findandreplace.outputs.value }}' -ak '${{secrets.psgallery_api_key}}' -WhatIf
       working-directory: './'
