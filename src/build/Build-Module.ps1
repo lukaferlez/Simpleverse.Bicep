@@ -23,24 +23,24 @@ function Build-Module {
 		$content = @()
 
 		foreach ($file in $moduleFiles) {
-			# $relativeFileName = Resolve-Path $file -Relative
-			# if ($file.Extension -ne '.ps1' -and $file.Extension -ne '.psm1') {
-			# 		Write-InformationEx "Skipping $relativeFileName" -ForegroundColor Yellow
-			# 		continue
-			# }
+			$relativeFileName = Resolve-Path $file -Relative
+			if ($file.Extension -ne '.ps1' -and $file.Extension -ne '.psm1') {
+					Write-InformationEx "Skipping $relativeFileName" -ForegroundColor Yellow
+					continue
+			}
 			
-			# Write-InformationEx "Reading $relativeFileName"
-			# if ($file.Extension -eq '.ps1') {
-			# 	$results = [System.Management.Automation.Language.Parser]::ParseFile($file, [ref]$null, [ref]$null)
-			# 	if ($results.UsingStatements.Count -gt 0) {
-			# 		$results.UsingStatements | Select-Object Extent | Format-Table | Out-String | Write-DebugEx 
-			# 	}
-			# 	$using += $results.UsingStatements
-			# 	$content += $results.EndBlock.Extent.Text
-			# }
-			# elseif ($file.Extension -eq '.psm1') {
-			# 	$content = Get-Content $file
-			# }
+			Write-InformationEx "Reading $relativeFileName"
+			if ($file.Extension -eq '.ps1') {
+				$results = [System.Management.Automation.Language.Parser]::ParseFile($file, [ref]$null, [ref]$null)
+				if ($results.UsingStatements.Count -gt 0) {
+					$results.UsingStatements | Select-Object Extent | Format-Table | Out-String | Write-DebugEx 
+				}
+				$using += $results.UsingStatements
+				$content += $results.EndBlock.Extent.Text
+			}
+			elseif ($file.Extension -eq '.psm1') {
+				$content = Get-Content $file
+			}
 		}
 
 		$workingDir = Join-Path $buildPath "build/($name)"
@@ -58,11 +58,11 @@ function Build-Module {
 			Remove-Item $outFile -WhatIf:$false
 		}
 # 
-		# Write-InformationEx "Combining into $outFile"
-		# $using | Add-Content -Path $outFile -WhatIf:$false
-		# $content | Add-Content -Path $outFile -WhatIf:$false
+		Write-InformationEx "Combining into $outFile"
+		$using | Add-Content -Path $outFile -WhatIf:$false
+		$content | Add-Content -Path $outFile -WhatIf:$false
 
-		# Resolve-Path $outFile | Write-DebugEx
+		Resolve-Path $outFile | Write-DebugEx
 
 		Write-InformationEx "Built module $name to $outFile"
 
