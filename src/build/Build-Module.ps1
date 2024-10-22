@@ -43,24 +43,24 @@ function Build-Module {
 			# }
 		}
 
-		$workingDir = Join-Path $buildPath "build/($name)"
-		$outFile = Join-Path $workingDir "$name.psm1"
-
-		Write-DebugEx "Working directory $workingDir"
-		Write-DebugEx "Output file $outFile"
-
-		if (!(Test-Path $workingDir)) {
-			Write-DebugEx "Creating $workingDir"
-			New-Item $workingDir -ItemType Directory -WhatIf:$false
-		}
-		elseif (Test-Path $outFile) {
-			Write-DebugEx "Removing $outFile"
-			Remove-Item $outFile -WhatIf:$false
-		}
-
-		Write-InformationEx "Combining into $outFile"
-		$using | Add-Content -Path $outFile -WhatIf:$false
-		$content | Add-Content -Path $outFile -WhatIf:$false
+		# $workingDir = Join-Path $buildPath "build/($name)"
+		# $outFile = Join-Path $workingDir "$name.psm1"
+# 
+		# Write-DebugEx "Working directory $workingDir"
+		# Write-DebugEx "Output file $outFile"
+# 
+		# if (!(Test-Path $workingDir)) {
+		# 	Write-DebugEx "Creating $workingDir"
+		# 	New-Item $workingDir -ItemType Directory -WhatIf:$false
+		# }
+		# elseif (Test-Path $outFile) {
+		# 	Write-DebugEx "Removing $outFile"
+		# 	Remove-Item $outFile -WhatIf:$false
+		# }
+# 
+		# Write-InformationEx "Combining into $outFile"
+		# $using | Add-Content -Path $outFile -WhatIf:$false
+		# $content | Add-Content -Path $outFile -WhatIf:$false
 
 		# Resolve-Path $outFile | Write-DebugEx
 
