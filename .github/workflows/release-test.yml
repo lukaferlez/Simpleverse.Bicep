@@ -21,6 +21,13 @@ jobs:
         replace: ''
     - name: Publish with powershell2
       run:
+        Get-ChildItem -Recurse
+    - name: Publish with powershell2
+      run:
+        Get-ChildItem -Recurse
+      working-directory: './'
+    - name: Publish with powershell2
+      run:
         Resolve-Path -Path './src/build/Publish-Manifest.ps1'
       working-directory: './'
     - name: Publish with powershell
