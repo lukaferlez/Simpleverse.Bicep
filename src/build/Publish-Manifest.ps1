@@ -18,6 +18,8 @@ function Publish-Manifest {
 		$ConfirmPreference = 'None'
 	}
 
+	Write-Host $ConfirmPreference
+
 	if ($PSCmdlet.ShouldProcess($relativePath)) {
 		Publish-Module `
 			-Name $psdPath `

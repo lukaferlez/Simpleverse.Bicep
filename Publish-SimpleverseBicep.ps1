@@ -17,4 +17,8 @@ param(
 . "./src/log/Write-InformationEx.ps1"
 . "./src/build/Publish-Manifest.ps1"
 
+if ($Force -and -not $PSBoundParameters.ContainsKey('Confirm')) {
+	$ConfirmPreference = 'None'
+}
+
 ./Build-SimpleverseBicep -v $version | Publish-Manifest -ak $apiKey -f:$Force -WhatIf:$WhatIfPreference
