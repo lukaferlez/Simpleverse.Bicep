@@ -19,29 +19,29 @@ function Build-Module {
 	{
 		Write-InformationEx "Building module $name" -ForegroundColor 'Green'
 
-		$using = @()
+		$using = @()0
 		$content = @()
 
-		foreach ($file in $moduleFiles) {
-			$relativeFileName = Resolve-Path $file -Relative
-			if ($file.Extension -ne '.ps1' -and $file.Extension -ne '.psm1') {
-					Write-InformationEx "Skipping $relativeFileName" -ForegroundColor Yellow
-					continue
-			}
-			
-			Write-InformationEx "Reading $relativeFileName"
-			if ($file.Extension -eq '.ps1') {
-				$results = [System.Management.Automation.Language.Parser]::ParseFile($file, [ref]$null, [ref]$null)
-				if ($results.UsingStatements.Count -gt 0) {
-					$results.UsingStatements | Select-Object Extent | Format-Table | Out-String | Write-DebugEx 
-				}
-				$using += $results.UsingStatements
-				$content += $results.EndBlock.Extent.Text
-			}
-			elseif ($file.Extension -eq '.psm1') {
-				$content = Get-Content $file
-			}
-		}
+		# foreach ($file in $moduleFiles) {
+		# 	$relativeFileName = Resolve-Path $file -Relative
+		# 	if ($file.Extension -ne '.ps1' -and $file.Extension -ne '.psm1') {
+		# 			Write-InformationEx "Skipping $relativeFileName" -ForegroundColor Yellow
+		# 			continue
+		# 	}
+# 
+		# 	Write-InformationEx "Reading $relativeFileName"
+		# 	if ($file.Extension -eq '.ps1') {
+		# 		$results = [System.Management.Automation.Language.Parser]::ParseFile($file, [ref]$null, [ref]$null)
+		# 		if ($results.UsingStatements.Count -gt 0) {
+		# 			$results.UsingStatements | Select-Object Extent | Format-Table | Out-String | Write-DebugEx 
+		# 		}
+		# 		$using += $results.UsingStatements
+		# 		$content += $results.EndBlock.Extent.Text
+		# 	}
+		# 	elseif ($file.Extension -eq '.psm1') {
+		# 		$content = Get-Content $file
+		# 	}
+		# }
 
 		$workingDir = Join-Path $buildPath "build/($name)"
 		$outFile = Join-Path $workingDir "$name.psm1"
