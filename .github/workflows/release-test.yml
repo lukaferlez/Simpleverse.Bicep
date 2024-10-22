@@ -21,4 +21,4 @@ jobs:
         replace: ''
     - name: Publish with powershell
       run:
-        .\Publish-SimpleverseBicep.ps1 -v '${{ steps.findandreplace.outputs.value }}' -ak '${{secrets.psgallery_api_key}}'
+        .\Publish-SimpleverseBicep.ps1 -v '${{ steps.findandreplace.outputs.value }}' -ak '${{secrets.psgallery_api_key}}' -Confirm
