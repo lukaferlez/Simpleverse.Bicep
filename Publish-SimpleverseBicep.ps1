@@ -14,10 +14,4 @@ param(
 . "./src/log/Write-InformationEx.ps1"
 . "./src/build/Publish-Manifest.ps1"
 
-# $filePath = ./Build-SimpleverseBicep -v $version
-
-# Write-InformationEx $filePath
-
 ./Build-SimpleverseBicep -v $version | Publish-Manifest -ak $apiKey -Confirm:$ConfirmPreference -WhatIf:$WhatIfPreference
-
-Get-ChildItem -Recurse
