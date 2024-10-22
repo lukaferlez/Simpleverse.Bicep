@@ -22,4 +22,6 @@ foreach ($moduleFile in $moduleFiles) {
 
 $moduleFile = ,$moduleFiles | Build-Module -n 'Simpleverse.Bicep'
 
+Write-InformationEx $moduleFile
+
 return Build-Manifest 'Simpleverse.Bicep' './src/manifest.psd1' $moduleFile $version
