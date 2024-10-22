@@ -13,8 +13,9 @@ function Build-Module {
 		[Alias("b")]
 		[string] $buildPath = './'
 	)
-
-	process
+	BEGIN
+	{}
+	PROCESS
 	{
 		Write-InformationEx "Building module $name" -ForegroundColor 'Green'
 
@@ -66,8 +67,9 @@ function Build-Module {
 		Resolve-Path $outFile | Write-DebugEx
 
 		Write-InformationEx "Built module $name to $outFile"
-		# "Export-ModuleMember -Function * -Cmdlet *" | Add-Content -Path $outFile
 
 		return $outFile
 	}
+	END
+	{}
 }
