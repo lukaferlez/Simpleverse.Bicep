@@ -21,14 +21,7 @@ jobs:
         replace: ''
     - name: Publish with powershell2
       run:
-        Get-ChildItem -Recurse
-    - name: Publish with powershell2
-      run:
-        Get-ChildItem -Recurse
-      working-directory: './'
-    - name: Publish with powershell2
-      run:
-        ./Build-SimpleverseBicep -v '1.0.0'
+        ./Build-SimpleverseBicep -v '1.0.0' -Debug
     - name: Publish with powershell
       run:
         .\Publish-SimpleverseBicep.ps1 -v '${{ steps.findandreplace.outputs.value }}' -ak '${{secrets.psgallery_api_key}}' -WhatIf -Debug
