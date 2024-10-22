@@ -49,14 +49,14 @@ function Build-Module {
 		Write-DebugEx "Working directory $workingDir"
 		Write-DebugEx "Output file $outFile"
 # 
-		# if (!(Test-Path $workingDir)) {
-		# 	Write-DebugEx "Creating $workingDir"
-		# 	New-Item $workingDir -ItemType Directory -WhatIf:$false
-		# }
-		# elseif (Test-Path $outFile) {
-		# 	Write-DebugEx "Removing $outFile"
-		# 	Remove-Item $outFile -WhatIf:$false
-		# }
+		if (!(Test-Path $workingDir)) {
+			Write-DebugEx "Creating $workingDir"
+			New-Item $workingDir -ItemType Directory -WhatIf:$false
+		}
+		elseif (Test-Path $outFile) {
+			Write-DebugEx "Removing $outFile"
+			Remove-Item $outFile -WhatIf:$false
+		}
 # 
 		# Write-InformationEx "Combining into $outFile"
 		# $using | Add-Content -Path $outFile -WhatIf:$false
