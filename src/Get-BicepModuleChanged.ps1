@@ -123,4 +123,4 @@ function Get-BicepModuleChanged {
 	return $impactedModules
 }
 
-Export-ModuleMember Get-ChangedBicepModule
+Export-ModuleMember Get-BicepModuleChanged

@@ -68,4 +68,4 @@ function Get-BicepModuleImport([string] $pathSpec) {
 	return $modules
 }
 
-Export-ModuleMember Get-BicepImport
+Export-ModuleMember Get-BicepModuleImport
