@@ -21,7 +21,7 @@ jobs:
         replace: ''
     - name: Publish with powershell2
       run:
-        dir
+        Resolve-Path -Path './src/build/Publish-Manifest.ps1'
       working-directory: './'
     - name: Publish with powershell
       run:
