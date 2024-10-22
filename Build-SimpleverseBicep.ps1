@@ -1,3 +1,4 @@
+[OutputType([string])]
 param (
 		[Parameter(Mandatory=$true, Position=0, HelpMessage="Module version.")]
 		[Alias("v")]
@@ -13,12 +14,14 @@ param (
 
 $moduleFiles = Get-ChildItem './src/log/*.ps1', './src/*.ps1' | Resolve-Path -Relative
 
-Write-InformationEx "Analyzing script file" -ForegroundColor Green
+Write-InformationEx "Analyzing script files" -ForegroundColor Green
 foreach ($moduleFile in $moduleFiles) {
 	Write-InformationEx "Analyzing $moduleFile"
-	Invoke-ScriptAnalyzer $moduleFile
+	Invoke-ScriptAnalyzer $moduleFile -WhatIf:$false -Confirm:$false
 }
 
 $moduleFile = ,$moduleFiles | Build-Module -n 'Simpleverse.Bicep'
+
+Write-InformationEx $moduleFile
 
 return Build-Manifest 'Simpleverse.Bicep' './src/manifest.psd1' $moduleFile $version

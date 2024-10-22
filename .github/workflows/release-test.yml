@@ -1,10 +1,7 @@
-name: release
+name: release-test
 on:
   workflow_dispatch:
   push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -24,4 +21,4 @@ jobs:
         replace: ''
     - name: Publish with powershell
       run:
-        .\Publish-SimpleverseBicep.ps1 -v '${{ steps.findandreplace.outputs.value }}' -ak '${{secrets.psgallery_api_key}}' -f
+        .\Publish-SimpleverseBicep.ps1 -v '${{ steps.findandreplace.outputs.value }}' -ak '${{secrets.psgallery_api_key}}' -WhatIf
