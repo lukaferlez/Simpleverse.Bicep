@@ -18,16 +18,6 @@ function Build-Module {
 	{
 		Write-InformationEx "Building module $name" -ForegroundColor 'Green'
 
-		$workingDir = Join-Path $buildPath "build/($name)"
-		$outFile = Join-Path $workingDir "$name.psm1"
-
-		if (!(Test-Path $workingDir)) {
-			New-Item $workingDir -ItemType Directory
-		}
-		elseif (Test-Path $outFile) {
-			Remove-Item $outFile
-		}
-
 		$using = @()
 		$content = @()
 
@@ -52,6 +42,21 @@ function Build-Module {
 			elseif ($file.Extension -eq '.psm1') {
 				$content = Get-Content $file
 			}
+		}
+
+		$workingDir = Join-Path $buildPath "build/($name)"
+		$outFile = Join-Path $workingDir "$name.psm1"
+
+		Write-DebugEx "Working directory $workingDir"
+		Write-DebugEx "Output file $outFile"
+
+		if (!(Test-Path $workingDir)) {
+			Write-DebugEx "Creating $workingDir"
+			New-Item $workingDir -ItemType Directory
+		}
+		elseif (Test-Path $outFile) {
+			Write-DebugEx "Removing $outFile"
+			Remove-Item $outFile
 		}
 
 		Write-InformationEx "Combining into $outFile"
