@@ -43,11 +43,11 @@ function Build-Module {
 			# }
 		}
 
-		# $workingDir = Join-Path $buildPath "build/($name)"
-		# $outFile = Join-Path $workingDir "$name.psm1"
+		$workingDir = Join-Path $buildPath "build/($name)"
+		$outFile = Join-Path $workingDir "$name.psm1"
 # 
-		# Write-DebugEx "Working directory $workingDir"
-		# Write-DebugEx "Output file $outFile"
+		Write-DebugEx "Working directory $workingDir"
+		Write-DebugEx "Output file $outFile"
 # 
 		# if (!(Test-Path $workingDir)) {
 		# 	Write-DebugEx "Creating $workingDir"
