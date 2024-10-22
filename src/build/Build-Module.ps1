@@ -55,8 +55,8 @@ function Build-Module {
 		}
 
 		Write-InformationEx "Combining into $outFile"
-		$using | Add-Content -Path $outFile
-		$content | Add-Content -Path $outFile
+		$using | Add-Content -Path $outFile -WhatIf:$false
+		$content | Add-Content -Path $outFile -WhatIf:$false
 
 		Resolve-Path $outFile | Write-DebugEx
 

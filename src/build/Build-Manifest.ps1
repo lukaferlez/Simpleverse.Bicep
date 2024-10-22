@@ -37,7 +37,7 @@ function Build-Manifest {
 	$fileContent = $fileContent -replace '{{version}}', $version
 	Write-InformationEx "Set Prerelease $preReleaseTag"	
 	$fileContent = $fileContent -replace '{{preReleaseTag}}', $preReleaseTag 
-	Set-Content $psdOutFile -Value $fileContent -Force
+	Set-Content $psdOutFile -Value $fileContent -Force -WhatIf:$false
 
 	return $psdOutFile
 }

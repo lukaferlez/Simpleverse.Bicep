@@ -13,10 +13,10 @@ param (
 
 $moduleFiles = Get-ChildItem './src/log/*.ps1', './src/*.ps1' | Resolve-Path -Relative
 
-Write-InformationEx "Analyzing script file" -ForegroundColor Green
+Write-InformationEx "Analyzing script files" -ForegroundColor Green
 foreach ($moduleFile in $moduleFiles) {
 	Write-InformationEx "Analyzing $moduleFile"
-	Invoke-ScriptAnalyzer $moduleFile
+	Invoke-ScriptAnalyzer $moduleFile -WhatIf:$false
 }
 
 $moduleFile = ,$moduleFiles | Build-Module -n 'Simpleverse.Bicep'
