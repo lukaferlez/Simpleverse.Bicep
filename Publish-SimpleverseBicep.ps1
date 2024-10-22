@@ -17,4 +17,6 @@ param(
 . "./src/log/Write-InformationEx.ps1"
 . "./src/build/Publish-Manifest.ps1"
 
+Write-Host $Force
+
 ./Build-SimpleverseBicep -v $version | Publish-Manifest -ak $apiKey -f:$Force -WhatIf:$WhatIfPreference
