@@ -40,7 +40,10 @@ function Update-BicepModuleVersion {
 		[string] $PathSpec,
 		[Parameter(Mandatory = $false, HelpMessage = "Path to bicepconfig.json with defined registries.")]
 		[Alias("b")]
-		[string] $BicepConfigPath = 'bicepconfig.json'
+		[string] $BicepConfigPath = 'bicepconfig.json',
+		[Parameter(Mandatory = $false, HelpMessage = "Force update without confirmation.")]
+		[Alias("f")]
+		[switch] $Force
 	)
 
 	$modules = Get-BicepModuleImport $PathSpec | Where-Object { $_.Alias -ne '.' }
@@ -84,13 +87,17 @@ function Update-BicepModuleVersion {
 
 	$filesToUpdate | Format-Table | Out-String | Write-InformationEx
 
+	if ($Force -and -not $PSBoundParameters.ContainsKey('Confirm')) {
+		$ConfirmPreference = 'None'
+	}
+
 	if ($PSCmdlet.ShouldProcess($filesToUpdate.Path, "Update")) {
 		foreach ($fileToUpdate in $filesToUpdate) {
 			$content = Get-Content $fileToUpdate.Path
 			foreach ($module in $fileToUpdate.Modules) {
 				$content = $content -replace "$($module.Alias):$($module.Name):$($module.Version)", "$($module.Alias):$($module.Name):$($module.LatestVersion)"
 			}
-			Set-Content -Path $fileToUpdate.Path -Value $content
+			Set-Content -Path $fileToUpdate.Path -Value $content -Confirm:$false -WhatIf:$WhatIfPreference
 		}
 
 		Write-InformationEx "Updated $($filesToUpdate.Count) files." -ForegroundColor Green
