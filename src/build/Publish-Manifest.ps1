@@ -14,6 +14,9 @@ function Publish-Manifest {
 	$relativePath = Resolve-Path $psdPath -Relative
 	Write-InformationEx "Publishing manifest $($relativePath)" -ForegroundColor Green
 
+	Write-Host $Force
+	Write-Host $PSBoundParameters.ContainsKey('Confirm')
+
 	if ($Force -and -not $PSBoundParameters.ContainsKey('Confirm')) {
 		$ConfirmPreference = 'None'
 	}
