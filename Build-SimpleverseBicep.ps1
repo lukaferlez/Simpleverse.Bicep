@@ -1,3 +1,4 @@
+[OutputType([string])]
 param (
 		[Parameter(Mandatory=$true, Position=0, HelpMessage="Module version.")]
 		[Alias("v")]

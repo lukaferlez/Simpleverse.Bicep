@@ -14,4 +14,8 @@ param(
 . "./src/log/Write-InformationEx.ps1"
 . "./src/build/Publish-Manifest.ps1"
 
-./Build-SimpleverseBicep -v $version | Publish-Manifest -ak $apiKey -Confirm:$ConfirmPreference -WhatIf:$WhatIfPreference
+$filePath = ./Build-SimpleverseBicep -v $version
+
+Write-InformationEx $filePath
+
+$filePath | Publish-Manifest -ak $apiKey -Confirm:$ConfirmPreference -WhatIf:$WhatIfPreference
