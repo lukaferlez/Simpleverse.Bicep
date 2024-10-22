@@ -23,11 +23,11 @@ function Build-Module {
 		$content = @()
 
 		foreach ($file in $moduleFiles) {
-			$relativeFileName = Resolve-Path $file -Relative
-			if ($file.Extension -ne '.ps1' -and $file.Extension -ne '.psm1') {
-					Write-InformationEx "Skipping $relativeFileName" -ForegroundColor Yellow
-					continue
-			}
+			# $relativeFileName = Resolve-Path $file -Relative
+			# if ($file.Extension -ne '.ps1' -and $file.Extension -ne '.psm1') {
+			# 		Write-InformationEx "Skipping $relativeFileName" -ForegroundColor Yellow
+			# 		continue
+			# }
 			
 			# Write-InformationEx "Reading $relativeFileName"
 			# if ($file.Extension -eq '.ps1') {
