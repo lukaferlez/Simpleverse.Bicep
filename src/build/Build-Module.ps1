@@ -51,7 +51,7 @@ function Build-Module {
 # 
 		if (!(Test-Path $workingDir)) {
 			Write-DebugEx "Creating $workingDir"
-			_ = New-Item $workingDir -ItemType Directory -WhatIf:$false
+			$null = New-Item $workingDir -ItemType Directory -WhatIf:$false
 		}
 		elseif (Test-Path $outFile) {
 			Write-DebugEx "Removing $outFile"
