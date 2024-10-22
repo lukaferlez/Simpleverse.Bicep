@@ -19,6 +19,10 @@ jobs:
         source: ${{github.ref_name}}
         find: 'v'
         replace: ''
+    - name: Publish with powershell2
+      run:
+        dir
+      working-directory: './'
     - name: Publish with powershell
       run:
         .\Publish-SimpleverseBicep.ps1 -v '${{ steps.findandreplace.outputs.value }}' -ak '${{secrets.psgallery_api_key}}' -WhatIf
