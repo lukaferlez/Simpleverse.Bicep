@@ -5,7 +5,10 @@ param(
 	[string] $version,
 	[Parameter(Mandatory=$true, Position=1, HelpMessage="The API key to use when publishing.")]
 	[Alias("ak")]
-	[string] $apiKey
+	[string] $apiKey,
+	[Parameter(Mandatory=$false, HelpMessage="Force publish without confirmation.")]
+	[Alias("f")]
+	[switch] $Force
 )
 
 . "./src/log/Format-LogMessage.ps1"
@@ -14,4 +17,4 @@ param(
 . "./src/log/Write-InformationEx.ps1"
 . "./src/build/Publish-Manifest.ps1"
 
-./Build-SimpleverseBicep -v $version | Publish-Manifest -ak $apiKey -Confirm:$ConfirmPreference -WhatIf:$WhatIfPreference
+./Build-SimpleverseBicep -v $version | Publish-Manifest -ak $apiKey -f:$Force -WhatIf:$WhatIfPreference

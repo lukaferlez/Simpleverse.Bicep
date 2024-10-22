@@ -17,7 +17,7 @@ $moduleFiles = Get-ChildItem './src/log/*.ps1', './src/*.ps1' | Resolve-Path -Re
 Write-InformationEx "Analyzing script files" -ForegroundColor Green
 foreach ($moduleFile in $moduleFiles) {
 	Write-InformationEx "Analyzing $moduleFile"
-	Invoke-ScriptAnalyzer $moduleFile -WhatIf:$false
+	Invoke-ScriptAnalyzer $moduleFile -WhatIf:$false -Confirm:$false
 }
 
 $moduleFile = ,$moduleFiles | Build-Module -n 'Simpleverse.Bicep'
