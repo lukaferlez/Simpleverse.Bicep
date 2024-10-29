@@ -46,7 +46,7 @@ function Publish-BicepModule {
 		[switch] $ExcludeDirectChanges
 	)
 
-	$modulesToPublish = Get-BicepModuleForPublish $PathSpec $CommitRange -ExcludeDirectChanges:$ExcludeDirectChanges
+	$modulesToPublish = Get-BicepModuleForPublish $PathSpec -cr $CommitRange -ExcludeDirectChanges:$ExcludeDirectChanges
 
 	foreach ($module in $modulesToPublish) {
 		Write-InformationEx "Publishing module $($module.Name) with version $($Version) to registry $($RegistryName)"
