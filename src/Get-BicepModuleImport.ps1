@@ -9,7 +9,7 @@ class BicepImport {
 
 function Get-BicepModuleImport([string] $pathSpec) {
 	Write-InformationEx "Get-BicepModuleImport: $pathSpec" -ForegroundColor Green
-	$moduleReferences = Get-ChildItem -recurse -Path $pathSpec | Select-String -pattern "\bmodule\b", "\bimport\b" | Select-Object
+	$moduleReferences = Get-ChildItem -recurse -Path $pathSpec | Select-String -pattern "^\bmodule\b", "^\bimport\b" | Select-Object
 
 	$modules = @()
 	for(($index = 0); $index -lt $moduleReferences.Count; $index++) {

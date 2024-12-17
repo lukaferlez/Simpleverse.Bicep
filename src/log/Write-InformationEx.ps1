@@ -37,11 +37,11 @@ function Write-InformationEx
 		[Parameter(Mandatory = $false)]
 		[ValidateNotNullOrWhiteSpace()]
 		[Alias("b")]
-		[System.ConsoleColor[]]$BackgroundColor = $Host.UI.RawUI.BackgroundColor,
+		[ConsoleColor]$BackgroundColor = $Host.UI.RawUI.BackgroundColor,
 		[Parameter(Mandatory = $false)]
 		[Alias("f")]
 		[ValidateNotNullOrWhiteSpace()]
-		[System.ConsoleColor[]]$ForegroundColor = $Host.UI.RawUI.ForegroundColor,
+		[ConsoleColor]$ForegroundColor = $Host.UI.RawUI.ForegroundColor,
 		[Parameter(Mandatory = $false)]
 		[Alias("nn")]
 		[Switch]$NoNewline,
@@ -58,7 +58,7 @@ function Write-InformationEx
 		}
 
 		[HostInformationMessage]$outMessage = @{
-			Message				    = Format-LogMessage -Message $Message -Level Information
+			Message				    = (Format-LogMessage -Message $Message -Level Information)
 			ForegroundColor		    = $ForegroundColor
 			BackgroundColor		    = $BackgroundColor
 			NoNewline			    = $NoNewline
