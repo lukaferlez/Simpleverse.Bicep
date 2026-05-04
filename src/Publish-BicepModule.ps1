@@ -46,6 +46,8 @@ function Publish-BicepModule {
 		[switch] $ExcludeDirectChanges
 	)
 
+	Assert-AzureLogin
+
 	$modulesToPublish = Get-BicepModuleForPublish $PathSpec -cr $CommitRange -ExcludeDirectChanges:$ExcludeDirectChanges
 
 	foreach ($module in $modulesToPublish) {
