@@ -46,6 +46,8 @@ function Update-BicepModuleVersion {
 		[switch] $Force
 	)
 
+	Assert-AzureLogin
+
 	$modules = Get-BicepModuleImport $PathSpec | Where-Object { $_.Alias -ne '.' }
 
 	Write-InformationEx "Found $($modules.Count) modules." -ForegroundColor Green
